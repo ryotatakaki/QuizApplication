@@ -6,9 +6,10 @@ const StartButton = styled.button`
 display: flex;
 justify-content: center;
 align-items: center;
-width: 100px;
-height: 40px;
+width: 250px;
+height: 50px;
 padding: 10px;
+font-size: 19px;
 margin: 10px 0;
 border: 2px solid cyan;
 background-color: #fff;

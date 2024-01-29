@@ -73,6 +73,14 @@ const ReplayButton = styled.button`
   }
 `
 
+const ReplayButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; // 必要に応じてマージンを調整
+`;
+
+
 
 
 function Quiz({ questions }) {
@@ -168,7 +176,9 @@ function Quiz({ questions }) {
             ) : (
                 <div>
                     <Result userAnswers={userAnswers} questions={questions} />
-                    <ReplayButton onClick={resetAndRestartQuiz}>Play again</ReplayButton>
+                    <ReplayButtonContainer>
+                        <ReplayButton onClick={resetAndRestartQuiz}>Play again</ReplayButton>
+                    </ReplayButtonContainer>
                 </div>
             )}
         </div>
