@@ -83,7 +83,7 @@ const ReplayButtonContainer = styled.div`
 
 
 
-function Quiz({ questions }) {
+function Quiz({ questions, onRestart}) {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [userAnswers, setUserAnswers] = useState([]);
     const [showResult, setShowResult] = useState(false);
@@ -111,12 +111,8 @@ function Quiz({ questions }) {
         return txt.value;
     };
 
-    const resetAndRestartQuiz = () => {
-        setCurrentQuestionIndex(0);
-        setUserAnswers([]);
-        setShowResult(false);
-        setKey(0);
-        setIsAnswered(false);
+    const handleRestart = () => {
+        onRestart();
     };
 
     const handleTimeUp = () => {
@@ -177,7 +173,7 @@ function Quiz({ questions }) {
                 <div>
                     <Result userAnswers={userAnswers} questions={questions} />
                     <ReplayButtonContainer>
-                        <ReplayButton onClick={resetAndRestartQuiz}>Play again</ReplayButton>
+                        <ReplayButton onClick={handleRestart}>Play again</ReplayButton>
                     </ReplayButtonContainer>
                 </div>
             )}

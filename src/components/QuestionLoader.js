@@ -30,12 +30,12 @@ function QuestionLoader() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const handleStartQuiz = async () => {
+    const fetchQuestions = async () => {
         setLoading(true);
         setError(null);
 
         try {
-            const response = await fetch('https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple');
+            const response = await fetch('https://opentdb.com/api.php?amount=10&category=9&type=multiple');
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -51,6 +51,14 @@ function QuestionLoader() {
         }
     };
 
+    const handleStartQuiz = () => {
+        fetchQuestions();
+    };
+
+    const handleRestartQuiz = () => {
+        fetchQuestions();
+    };
+
     if (loading) {
         return <p>Loading questions...</p>;
     }
@@ -62,7 +70,7 @@ function QuestionLoader() {
     return (
         <div>
             {questions.length > 0 ? (
-                <Quiz questions={questions} />
+                <Quiz questions={questions} onRestart={handleRestartQuiz} />
             ) : (
                 <StartButton onClick={handleStartQuiz}>Start Quiz</StartButton>
             )}
