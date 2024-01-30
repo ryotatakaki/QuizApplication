@@ -81,8 +81,6 @@ const ReplayButtonContainer = styled.div`
 `;
 
 
-
-
 function Quiz({ questions, onRestart}) {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [userAnswers, setUserAnswers] = useState([]);
