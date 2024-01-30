@@ -77,7 +77,7 @@ const ReplayButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px; // 必要に応じてマージンを調整
+  margin-top: 20px; 
 `;
 
 
@@ -91,6 +91,8 @@ function Quiz({ questions }) {
     const [feedback, setFeedback] = useState('');
     const [isAnswered, setIsAnswered] = useState(false);
     const [options, setOptions] = useState([]);
+
+    const currentQuestion = questions[currentQuestionIndex];
 
     useEffect(() => {
         if (questions[currentQuestionIndex]) {
@@ -148,8 +150,6 @@ function Quiz({ questions }) {
         return <p>Loading...</p>;
     }
 
-    const currentQuestion = questions[currentQuestionIndex];
-
     return (
         <div>
             {!showResult ? (
@@ -164,7 +164,7 @@ function Quiz({ questions }) {
                                 <OptionButton 
                                   key={index} 
                                   onClick={() => handleAnswer(option)}
-                                  disabled={isAnswered} // ボタンの無効化
+                                  disabled={isAnswered} 
                                 >
                                     {option}
                                 </OptionButton>
